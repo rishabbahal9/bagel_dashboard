@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const MCP_URL = "http://localhost:3001";
+const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL ?? "http://localhost:3001";
 
 export default function McpUrlPage() {
   const [copied, setCopied] = useState(false);
@@ -20,7 +20,9 @@ export default function McpUrlPage() {
       </p>
 
       <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
-        <p className="text-xs text-gray-500 uppercase tracking-widest mb-3">Your MCP Server URL</p>
+        <p className="text-xs text-gray-500 uppercase tracking-widest mb-3">
+          Your MCP Server URL
+        </p>
         <div className="flex items-center gap-3">
           <code className="flex-1 bg-gray-800 rounded-lg px-4 py-3 text-green-400 text-lg font-mono tracking-wide">
             {MCP_URL}
@@ -35,7 +37,10 @@ export default function McpUrlPage() {
       </div>
 
       <div className="mt-8 bg-gray-900 rounded-xl p-5 border border-gray-700">
-        <p className="text-sm text-gray-400 mb-3">Add to your project&apos;s <code className="bg-gray-800 px-1 rounded">.mcp.json</code>:</p>
+        <p className="text-sm text-gray-400 mb-3">
+          Add to your project&apos;s{" "}
+          <code className="bg-gray-800 px-1 rounded">.mcp.json</code>:
+        </p>
         <pre className="bg-gray-800 rounded-lg p-4 text-sm text-green-400 overflow-auto">{`{
   "mcpServers": {
     "bagel-production-context": {
